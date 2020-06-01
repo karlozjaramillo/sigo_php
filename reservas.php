@@ -75,7 +75,7 @@
             <article id="booking">
                 <h2 class="major">Reserva</h2>
                 <p>Por favor ingresa tu nombre y selecciona un trayecto.</p>
-                <form  method="post" action="Reservacion/guardarReserva.php">
+                <form method="post" action="Reservacion/guardarReserva.php">
                     <div class="fields">
                         <div class="field">
                             <label for="name">Nombre</label>
@@ -86,16 +86,16 @@
                             <select class="sel" name="trayecto" id="destino" required>
                                 <option value="" selected>--Seleccionar--</option>
 
-                                <?php 
+                                <?php
 
-                  $sql = "SELECT codigo,origen_destino FROM trayectos";
+                                $sql = "SELECT codigo,origen_destino FROM trayectos";
 
-                $query = $conexion -> query ($sql);
+                                $query = $conexion->query($sql);
 
-                while($valores = mysqli_fetch_array($query)){
-              echo "<option value='".$valores['codigo']."'>".$valores['origen_destino']."</option>";
-                }
-              ?>
+                                while ($valores = mysqli_fetch_array($query)) {
+                                    echo "<option value='" . $valores['codigo'] . "'>" . $valores['origen_destino'] . "</option>";
+                                }
+                                ?>
                             </select>
                         </div>
                         <div class="field half">
@@ -121,7 +121,7 @@
                     </div>
                     <ul class="actions">
                         <li>
-                            <input type="submit" value="RESERVAR" class="primary" id="reservabtn" name="guardarReserva"/>
+                            <input type="submit" value="RESERVAR" class="primary" id="reservabtn" name="guardarReserva" />
                         </li>
                         <li><input type="reset" value="Borrar" id="erasebtn" /></li>
                     </ul>
@@ -168,8 +168,7 @@
                         </div>
                         <div class="field">
                             <label for="message">Mensaje</label>
-                            <textarea name="message" id="message" rows="20"
-                                style="margin: 0px; height: 200px; width: 491px;"></textarea>
+                            <textarea name="message" id="message" rows="20" style="margin: 0px; height: 200px; width: 491px;"></textarea>
                         </div>
                     </div>
                     <ul class="actions">
@@ -429,8 +428,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                             </div>
                             <div class="field half">
                                 <label for="demo-email">Email</label>
-                                <input type="email" name="demo-email" id="demo-email" value=""
-                                    placeholder="jane@untitled.tld" />
+                                <input type="email" name="demo-email" id="demo-email" value="" placeholder="jane@untitled.tld" />
                             </div>
                             <div class="field">
                                 <label for="demo-category">Category</label>
@@ -460,8 +458,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                             </div>
                             <div class="field">
                                 <label for="demo-message">Message</label>
-                                <textarea name="demo-message" id="demo-message" placeholder="Enter your message"
-                                    rows="6"></textarea>
+                                <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
                             </div>
                         </div>
                         <ul class="actions">
@@ -493,48 +490,48 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
     <script src="assets2/js/custom.js"></script>
     <script src="materialize/js/materialize.js"></script>
     <script>
-    const calendar = document.querySelector("#date");
-    M.Datepicker.init(calendar, {
-        format: "dd/mm/yyyy",
-        minDate: new Date(),
-        defaultDate: new Date(),
-        setDefaultDate: true,
-    });
+        const calendar = document.querySelector("#date");
+        M.Datepicker.init(calendar, {
+            format: "yyyy/mm/dd",
+            minDate: new Date(),
+            defaultDate: new Date(),
+            setDefaultDate: true,
+        });
 
-    let seleccionar = document.querySelector("select");
+        let seleccionar = document.querySelector("select");
 
-    seleccionar.addEventListener("change", establecerCosto);
+        seleccionar.addEventListener("change", establecerCosto);
 
-    function establecerCosto() {
-        let eleccion = seleccionar.value;
+        function establecerCosto() {
+            let eleccion = seleccionar.value;
 
-        if (eleccion === "ANS-PEI") {
-            document.getElementById("costo").value = "$25000";
-            document.getElementById("vehiculo").value = "VHY321";
-            document.getElementById("distancia").value = "79,3 Kms";
-            document.getElementById("duracion").value = "94 minutos";
-        } else if (eleccion === "MAN-PEI") {
-            document.getElementById("costo").value = "$15000";
-            document.getElementById("vehiculo").value = "BTR963";
-            document.getElementById("distancia").value = "53,2 Kms";
-            document.getElementById("duracion").value = "76 minutos";
-        } else if (eleccion === "VIR-PEI") {
-            document.getElementById("costo").value = "$10000";
-            document.getElementById("vehiculo").value = "NSA741";
-            document.getElementById("distancia").value = "34,8 Kms";
-            document.getElementById("duracion").value = "53 minutos";
-        } else if (eleccion === "VTR-MAN") {
-            document.getElementById("costo").value = "$45000";
-            document.getElementById("vehiculo").value = "TGB537";
-            document.getElementById("distancia").value = "75 Kms";
-            document.getElementById("duracion").value = "121 minutos";
-        } else {
-            document.getElementById("costo").value = "";
-            document.getElementById("vehiculo").value = "";
-            document.getElementById("distancia").value = "";
-            document.getElementById("duracion").value = "";
+            if (eleccion === "1") {
+                document.getElementById("costo").value = "$25000";
+                document.getElementById("vehiculo").value = "VHY321";
+                document.getElementById("distancia").value = "79,3 Kms";
+                document.getElementById("duracion").value = "94 minutos";
+            } else if (eleccion === "2") {
+                document.getElementById("costo").value = "$15000";
+                document.getElementById("vehiculo").value = "BTR963";
+                document.getElementById("distancia").value = "53,2 Kms";
+                document.getElementById("duracion").value = "76 minutos";
+            } else if (eleccion === "3") {
+                document.getElementById("costo").value = "$10000";
+                document.getElementById("vehiculo").value = "NSA741";
+                document.getElementById("distancia").value = "34,8 Kms";
+                document.getElementById("duracion").value = "53 minutos";
+            } else if (eleccion === "4") {
+                document.getElementById("costo").value = "$45000";
+                document.getElementById("vehiculo").value = "TGB537";
+                document.getElementById("distancia").value = "75 Kms";
+                document.getElementById("duracion").value = "121 minutos";
+            } else {
+                document.getElementById("costo").value = "";
+                document.getElementById("vehiculo").value = "";
+                document.getElementById("distancia").value = "";
+                document.getElementById("duracion").value = "";
+            }
         }
-    }
     </script>
 </body>
 

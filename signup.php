@@ -1,48 +1,53 @@
 <?php
 
-  require 'database.php';
+require 'database.php';
 
-  $message = '';
+$message = '';
 
-  if (!empty($_POST['email']) && !empty($_POST['password'])) {
-    $sql = "INSERT INTO users (email, password) VALUES (:email, :password)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':email', $_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $stmt->bindParam(':password', $password);
+if (!empty($_POST['email']) && !empty($_POST['password'])) {
+  $sql = "INSERT INTO users (email, password) VALUES (:email, :password)";
+  $stmt = $conn->prepare($sql);
+  $stmt->bindParam(':email', $_POST['email']);
+  $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+  $stmt->bindParam(':password', $password);
 
-    if ($stmt->execute()) {
-      $message = 'Successfully created new user';
-    } else {
-      $message = 'Sorry there must have been an issue creating your account';
-    }
+  if ($stmt->execute()) {
+    $message = 'Te has registrado satisfactoriamente';
+  } else {
+    $message = 'Lo siento, hemos tenido problemas creando tu cuenta';
   }
+}
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>SIGO</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
+  <title>SIGO</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
 </head>
-  <body>
 
-    <?php require 'partials/header.php' ?>
+<body class="is-preload">
 
-    <?php if(!empty($message)): ?>
-      <p> <?= $message ?></p>
-    <?php endif; ?>
+  <?php require 'partials/header.php' ?>
 
-    <h1>SignUp</h1>
-    <span>or <a href="index.php">Login</a></span>
+  <?php if (!empty($message)) : ?>
+    <p> <?= $message ?></p>
+  <?php endif; ?>
 
-    <form action="signup.php" method="POST">
-      <input name="email" type="text" placeholder="Enter your email">
-      <input name="password" type="password" placeholder="Enter your Password">
-      <input name="confirm_password" type="password" placeholder="Confirm Password">
-      <input type="submit" value="Submit">
-    </form>
+  <h1>Regístrate</h1>
+  <span>o <a href="index.php">Ingresa</a></span>
 
-  </body>
+  <form action="signup.php" method="POST">
+    <div id="signup-form">
+      <input name="email" type="text" placeholder="Ingresa tu correo">
+      <input name="password" type="password" placeholder="Ingresa tu contraseña">
+      <input name="confirm_password" type="password" placeholder="Confirma tu contraseña">
+      <input type="submit" value="Registrar">
+    </div>
+  </form>
+
+</body>
+
 </html>
