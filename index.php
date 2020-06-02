@@ -83,7 +83,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
       <input type="submit" value="Ingresar" />
     </div>
   </form>
-  <p><a href="signup.php">Regístrate</a></p>
+  <span><a href="signup.php">Regístrate</a></span>
 
   <!-- Footer -->
   <footer id="footer">
@@ -98,7 +98,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
         <a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a>
       </li>
       <li>
-        <a href="#" class="icon brands fa-whatsapp"><span class="label">GitHub</span></a>
+        <a href="#" class="icon brands fa-whatsapp"><span class="label">WhatsApp</span></a>
       </li>
     </ul>
     <ul class="copyright">

@@ -20,8 +20,8 @@
     <div id="wrapper">
         <!-- Header -->
         <header id="header">
-            <div class="logo" title="Viaja">
-                <a href="index.html"><i class="fas fa-bus" style="font-size: 40px;"></i></a>
+            <div class="logo">
+                <i class="fas fa-bus" style="font-size: 40px;"></i>
             </div>
             <div class="content">
                 <div class="inner">
@@ -37,7 +37,7 @@
                     <li><a href="#booking">Reserva</a></li>
                     <li><a href="#about">Acerca</a></li>
                     <li><a href="#contact">Contacto</a></li>
-                    <li> <a href="logout.php"> Logout</a></li>
+                    <li><a href="logout.php"> Logout</a></li>
                     <!-- <li><a href="#elements">Elements</a></li> -->
                 </ul>
             </nav>
@@ -194,7 +194,7 @@
                         <a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a>
                     </li>
                     <li>
-                        <a href="#" class="icon brands fa-whatsapp"><span class="label">GitHub</span></a>
+                        <a href="#" class="icon brands fa-whatsapp"><span class="label">WhatsApp</span></a>
                     </li>
                 </ul>
                 <div>
