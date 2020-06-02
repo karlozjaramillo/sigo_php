@@ -20,8 +20,8 @@
     <div id="wrapper">
         <!-- Header -->
         <header id="header">
-            <div class="logo" title="Viaja">
-                <a href="index.html"><i class="fas fa-bus" style="font-size: 40px;"></i></a>
+            <div class="logo">
+                <i class="fas fa-bus" style="font-size: 40px;"></i>
             </div>
             <div class="content">
                 <div class="inner">
@@ -37,7 +37,7 @@
                     <li><a href="#booking">Reserva</a></li>
                     <li><a href="#about">Acerca</a></li>
                     <li><a href="#contact">Contacto</a></li>
-                    <li> <a href="logout.php"> Logout</a></li>
+                    <li><a href="logout.php"> Logout</a></li>
                     <!-- <li><a href="#elements">Elements</a></li> -->
                 </ul>
             </nav>
@@ -75,7 +75,7 @@
             <article id="booking">
                 <h2 class="major">Reserva</h2>
                 <p>Por favor ingresa tu nombre y selecciona un trayecto.</p>
-                <form  method="post" action="Reservacion/guardarReserva.php">
+                <form method="post" action="Reservacion/guardarReserva.php">
                     <div class="fields">
                         <div class="field">
                             <label for="name">Nombre</label>
@@ -118,7 +118,7 @@
                     </div>
                     <ul class="actions">
                         <li>
-                            <input type="submit" value="RESERVAR" class="primary" id="reservabtn" name="guardarReserva"/>
+                            <input type="submit" value="RESERVAR" class="primary" id="reservabtn" name="guardarReserva" />
                         </li>
                         <li><input type="reset" value="Borrar" id="erasebtn" /></li>
                         <li>
@@ -169,8 +169,7 @@
                         </div>
                         <div class="field">
                             <label for="message">Mensaje</label>
-                            <textarea name="message" id="message" rows="20"
-                                style="margin: 0px; height: 200px; width: 491px;"></textarea>
+                            <textarea name="message" id="message" rows="20" style="margin: 0px; height: 200px; width: 491px;"></textarea>
                         </div>
                     </div>
                     <ul class="actions">
@@ -196,7 +195,7 @@
                         <a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a>
                     </li>
                     <li>
-                        <a href="#" class="icon brands fa-whatsapp"><span class="label">GitHub</span></a>
+                        <a href="#" class="icon brands fa-whatsapp"><span class="label">WhatsApp</span></a>
                     </li>
                 </ul>
                 <div>
@@ -430,8 +429,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                             </div>
                             <div class="field half">
                                 <label for="demo-email">Email</label>
-                                <input type="email" name="demo-email" id="demo-email" value=""
-                                    placeholder="jane@untitled.tld" />
+                                <input type="email" name="demo-email" id="demo-email" value="" placeholder="jane@untitled.tld" />
                             </div>
                             <div class="field">
                                 <label for="demo-category">Category</label>
@@ -461,8 +459,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                             </div>
                             <div class="field">
                                 <label for="demo-message">Message</label>
-                                <textarea name="demo-message" id="demo-message" placeholder="Enter your message"
-                                    rows="6"></textarea>
+                                <textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
                             </div>
                         </div>
                         <ul class="actions">
@@ -494,6 +491,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
     <script src="assets2/js/custom.js"></script>
     <script src="materialize/js/materialize.js"></script>
     <script>
+<<<<<<< HEAD
     const calendar = document.querySelector("#date");
     M.Datepicker.init(calendar, {
         format: "yyyy/mm/dd",
@@ -534,8 +532,50 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
             document.getElementById("vehiculo").value = "";
             document.getElementById("distancia").value = "";
             document.getElementById("duracion").value = "";
+=======
+        const calendar = document.querySelector("#date");
+        M.Datepicker.init(calendar, {
+            format: "yyyy/mm/dd",
+            minDate: new Date(),
+            defaultDate: new Date(),
+            setDefaultDate: true,
+        });
+
+        let seleccionar = document.querySelector("select");
+
+        seleccionar.addEventListener("change", establecerCosto);
+
+        function establecerCosto() {
+            let eleccion = seleccionar.value;
+
+            if (eleccion === "1") {
+                document.getElementById("costo").value = "$25000";
+                document.getElementById("vehiculo").value = "VHY321";
+                document.getElementById("distancia").value = "79,3 Kms";
+                document.getElementById("duracion").value = "94 minutos";
+            } else if (eleccion === "2") {
+                document.getElementById("costo").value = "$15000";
+                document.getElementById("vehiculo").value = "BTR963";
+                document.getElementById("distancia").value = "53,2 Kms";
+                document.getElementById("duracion").value = "76 minutos";
+            } else if (eleccion === "3") {
+                document.getElementById("costo").value = "$10000";
+                document.getElementById("vehiculo").value = "NSA741";
+                document.getElementById("distancia").value = "34,8 Kms";
+                document.getElementById("duracion").value = "53 minutos";
+            } else if (eleccion === "4") {
+                document.getElementById("costo").value = "$45000";
+                document.getElementById("vehiculo").value = "TGB537";
+                document.getElementById("distancia").value = "75 Kms";
+                document.getElementById("duracion").value = "121 minutos";
+            } else {
+                document.getElementById("costo").value = "";
+                document.getElementById("vehiculo").value = "";
+                document.getElementById("distancia").value = "";
+                document.getElementById("duracion").value = "";
+            }
+>>>>>>> 3322aa39d2812b941f83dad30ee193ce699c0d63
         }
-    }
     </script>
 </body>
 

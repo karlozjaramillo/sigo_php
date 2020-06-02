@@ -230,7 +230,7 @@
 
 function redirectToBooking() {
   window.setTimeout(function () {
-    window.location.assign("reservas.html");
+    window.location.assign("reservas.php");
     $message._hide();
   }, 3000);
 }

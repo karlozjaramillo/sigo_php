@@ -430,12 +430,12 @@ a {
   -ms-transition: border-bottom-color 0.2s ease, color 0.2s ease;
   transition: border-bottom-color 0.2s ease, color 0.2s ease;
   border-bottom: dotted 1px rgba(255, 255, 255, 0.25);
-  color: #1cb495;
+  color: #0099ff;
   text-decoration: none;
 }
 a:hover {
   border-bottom-color: transparent;
-  color: #1cb495 !important;
+  color: #0099ff !important;
   text-decoration: none;
 }
 
@@ -867,7 +867,7 @@ textarea:focus {
   -ms-animation: focus 0.1s;
   animation: focus 0.1s;
   background-color: rgba(255, 255, 255, 0.125);
-  border-color: #1cb495;
+  border-color: #0099ff;
 }
 
 select {
@@ -957,15 +957,15 @@ input[type="radio"] + label:before {
 }
 input[type="checkbox"]:checked + label:before,
 input[type="radio"]:checked + label:before {
-  background: #1cb495;
-  border-color: #1cb495;
+  background: #0099ff;
+  border-color: #0099ff;
   color: #ffffff;
   content: "\f00c";
 }
 input[type="checkbox"]:focus + label:before,
 input[type="radio"]:focus + label:before {
-  border-color: #1cb495;
-  box-shadow: 0 0 0 2px #1cb495;
+  border-color: #0099ff;
+  box-shadow: 0 0 0 2px #0099ff;
 }
 
 input[type="checkbox"] + label:before {
