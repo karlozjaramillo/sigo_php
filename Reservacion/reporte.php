@@ -59,9 +59,10 @@ include('../bd.php');
                                         <td><?php echo $row['duracion']; ?></td>
                                         <td><?php echo $row['vehiculo']; ?></td>
                                         <td>
-                                            <a href="edit.php?id=<?php echo $row['id'] ?>#contact">Editar</a>
+                                            <a href="edit.php?id=<?php echo $row['id'] ?>#contact">
+                                                <i class="fas fa-edit"></i></a>
                                             <a href="delete.php?id=<?php echo $row['id'] ?>">
-                                                Eliminar</>
+                                                <i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php } ?>
