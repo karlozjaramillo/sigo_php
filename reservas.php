@@ -85,17 +85,14 @@
                             <label for="Trayecto">Trayecto</label>
                             <select class="sel" name="trayecto" id="destino" required>
                                 <option value="" selected>--Seleccionar--</option>
-
                                 <?php 
+                                    $sql = "SELECT codigo,origen_destino FROM trayectos";
+                                    $query = $conexion -> query ($sql);
 
-                  $sql = "SELECT codigo,origen_destino FROM trayectos";
-
-                $query = $conexion -> query ($sql);
-
-                while($valores = mysqli_fetch_array($query)){
-              echo "<option value='".$valores['codigo']."'>".$valores['origen_destino']."</option>";
-                }
-              ?>
+                                    while($valores = mysqli_fetch_array($query)){
+                                    echo "<option value='".$valores['codigo']."'>".$valores['origen_destino']."</option>";
+                                }
+                                 ?>
                             </select>
                         </div>
                         <div class="field half">
@@ -124,6 +121,10 @@
                             <input type="submit" value="RESERVAR" class="primary" id="reservabtn" name="guardarReserva"/>
                         </li>
                         <li><input type="reset" value="Borrar" id="erasebtn" /></li>
+                        <li>
+                        <a href="Reservacion/reporte.php#elements">mis reportes</a>
+
+                        </li>
                     </ul>
                 </form>
             </article>
@@ -495,7 +496,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
     <script>
     const calendar = document.querySelector("#date");
     M.Datepicker.init(calendar, {
-        format: "dd/mm/yyyy",
+        format: "yyyy/mm/dd",
         minDate: new Date(),
         defaultDate: new Date(),
         setDefaultDate: true,

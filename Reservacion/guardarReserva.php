@@ -11,6 +11,7 @@ if (isset($_POST['guardarReserva'])) {
 
   $query = "INSERT INTO reserva(nombre, trayecto, fecha) VALUES ('$nombre', '$trayecto', '$fecha')";
   $result = mysqli_query($conn, $query);
+  
   if(!$result) {
     die("Query Failed.");
   }
