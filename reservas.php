@@ -1,6 +1,26 @@
 <?php require 'database.php';
 
+$queryAll = "SELECT t.origen_destino,t.distancia,
+t.duracion,t.vehiculo, t.costo FROM trayectos t";
+$resultAll= mysqli_query($conexion, $queryAll);
+$rowAll = mysqli_fetch_all($resultAll);
 ?>
+
+<script>
+var data = <?php echo json_encode($rowAll); ?>;
+function cambia(){
+  var trayecto = document.getElementById("destino");
+  var selTrayecto = trayecto.options[trayecto.selectedIndex].text;
+  for (let index = 0; index < data.length; index++) {
+    if(selTrayecto == data[index][0]){
+      document.getElementById("distancia").value = data[index][1];
+      document.getElementById("duracion").value = data[index][2];
+      document.getElementById("vehiculo").value = data[index][3];
+      document.getElementById("costo").value = data[index][4];
+    }
+  }
+  }
+</script>
 <!DOCTYPE html>
 
 <html>
@@ -79,11 +99,11 @@
                     <div class="fields">
                         <div class="field">
                             <label for="name">Nombre</label>
-                            <input type="text" name="nombre" id="name" required />
+                            <input type="text" name="nombre" id="nombre" required />
                         </div>
                         <div class="field half">
                             <label for="Trayecto">Trayecto</label>
-                            <select class="sel" name="trayecto" id="destino" required>
+                            <select class="sel" name="trayecto" onchange="cambia()" id="destino" required>
                                 <option value="" selected>--Seleccionar--</option>
                                 <?php 
                                     $sql = "SELECT codigo,origen_destino FROM trayectos";
@@ -499,40 +519,40 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
             setDefaultDate: true,
         });
 
-        let seleccionar = document.querySelector("select");
+        // let seleccionar = document.querySelector("select");
 
-        seleccionar.addEventListener("change", establecerCosto);
+        // seleccionar.addEventListener("change", establecerCosto);
 
-        function establecerCosto() {
-            let eleccion = seleccionar.value;
+        // function establecerCosto() {
+        //     let eleccion = seleccionar.value;
 
-            if (eleccion === "1") {
-                document.getElementById("costo").value = "$25000";
-                document.getElementById("vehiculo").value = "VHY321";
-                document.getElementById("distancia").value = "79,3 Kms";
-                document.getElementById("duracion").value = "94 minutos";
-            } else if (eleccion === "2") {
-                document.getElementById("costo").value = "$15000";
-                document.getElementById("vehiculo").value = "BTR963";
-                document.getElementById("distancia").value = "53,2 Kms";
-                document.getElementById("duracion").value = "76 minutos";
-            } else if (eleccion === "3") {
-                document.getElementById("costo").value = "$10000";
-                document.getElementById("vehiculo").value = "NSA741";
-                document.getElementById("distancia").value = "34,8 Kms";
-                document.getElementById("duracion").value = "53 minutos";
-            } else if (eleccion === "4") {
-                document.getElementById("costo").value = "$45000";
-                document.getElementById("vehiculo").value = "TGB537";
-                document.getElementById("distancia").value = "75 Kms";
-                document.getElementById("duracion").value = "121 minutos";
-            } else {
-                document.getElementById("costo").value = "";
-                document.getElementById("vehiculo").value = "";
-                document.getElementById("distancia").value = "";
-                document.getElementById("duracion").value = "";
-            }
-        }
+        //     if (eleccion === "1") {
+        //         document.getElementById("costo").value = "$25000";
+        //         document.getElementById("vehiculo").value = "VHY321";
+        //         document.getElementById("distancia").value = "79,3 Kms";
+        //         document.getElementById("duracion").value = "94 minutos";
+        //     } else if (eleccion === "2") {
+        //         document.getElementById("costo").value = "$15000";
+        //         document.getElementById("vehiculo").value = "BTR963";
+        //         document.getElementById("distancia").value = "53,2 Kms";
+        //         document.getElementById("duracion").value = "76 minutos";
+        //     } else if (eleccion === "3") {
+        //         document.getElementById("costo").value = "$10000";
+        //         document.getElementById("vehiculo").value = "NSA741";
+        //         document.getElementById("distancia").value = "34,8 Kms";
+        //         document.getElementById("duracion").value = "53 minutos";
+        //     } else if (eleccion === "4") {
+        //         document.getElementById("costo").value = "$45000";
+        //         document.getElementById("vehiculo").value = "TGB537";
+        //         document.getElementById("distancia").value = "75 Kms";
+        //         document.getElementById("duracion").value = "121 minutos";
+        //     } else {
+        //         document.getElementById("costo").value = "";
+        //         document.getElementById("vehiculo").value = "";
+        //         document.getElementById("distancia").value = "";
+        //         document.getElementById("duracion").value = "";
+        //     }
+        // }
     </script>
 </body>
 
