@@ -2,24 +2,25 @@
 
 $queryAll = "SELECT t.origen_destino,t.distancia,
 t.duracion,t.vehiculo, t.costo FROM trayectos t";
-$resultAll= mysqli_query($conexion, $queryAll);
+$resultAll = mysqli_query($conexion, $queryAll);
 $rowAll = mysqli_fetch_all($resultAll);
 ?>
 
 <script>
-var data = <?php echo json_encode($rowAll); ?>;
-function cambia(){
-  var trayecto = document.getElementById("destino");
-  var selTrayecto = trayecto.options[trayecto.selectedIndex].text;
-  for (let index = 0; index < data.length; index++) {
-    if(selTrayecto == data[index][0]){
-      document.getElementById("distancia").value = data[index][1];
-      document.getElementById("duracion").value = data[index][2];
-      document.getElementById("vehiculo").value = data[index][3];
-      document.getElementById("costo").value = data[index][4];
+    var data = <?php echo json_encode($rowAll); ?>;
+
+    function cambia() {
+        var trayecto = document.getElementById("destino");
+        var selTrayecto = trayecto.options[trayecto.selectedIndex].text;
+        for (let index = 0; index < data.length; index++) {
+            if (selTrayecto == data[index][0]) {
+                document.getElementById("distancia").value = data[index][1];
+                document.getElementById("duracion").value = data[index][2];
+                document.getElementById("vehiculo").value = data[index][3];
+                document.getElementById("costo").value = data[index][4];
+            }
+        }
     }
-  }
-  }
 </script>
 <!DOCTYPE html>
 
@@ -45,7 +46,7 @@ function cambia(){
             </div>
             <div class="content">
                 <div class="inner">
-                    <img src="images/logoSigo_blanco.png" alt="" style="width: 20%; height: 20%;" />
+                    <img src="images/logoSigo_blanco.png" alt="" style="width: 20%;" />
                     <p>
                         Sistema Inteligente de Gestión Online
                     </p>

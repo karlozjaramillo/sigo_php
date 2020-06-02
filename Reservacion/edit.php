@@ -85,7 +85,7 @@ function cambia(){
                 <h2 class="major">EDITAR RESERVA</h2>
                 <form action="edit.php?id=<?php echo $_GET['id']; ?>" method="POST">
                     <div class="fields">
-                        <div class="field half">
+                        <div class="field">
                             <label for="nombre">Nombre</label>
                             <input name="nombre" type="text" value="<?php echo $nombre; ?>" placeholder="Update nombre" />
                         </div>
