@@ -5348,7 +5348,7 @@ small {
 .btn-large:focus,
 .btn-small:focus,
 .btn-floating:focus {
-  background-color: #1d7d74;
+  background-color: #1d577d;
 }
 
 .btn,
@@ -5367,7 +5367,7 @@ small {
 .btn:hover,
 .btn-large:hover,
 .btn-small:hover {
-  background-color: #2bbbad;
+  background-color: #1d577d;
 }
 
 .btn-floating {

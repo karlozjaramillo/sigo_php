@@ -1,5 +1,5 @@
 function validate() {
-  var name = document.getElementById("name").value;
+  var name = document.getElementById("nombre").value;
   var destinoList = document.getElementById("destino");
   var selDestino = destinoList.options[destinoList.selectedIndex].text;
   var fecha = document.getElementById("date").value;

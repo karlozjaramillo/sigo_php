@@ -79,20 +79,20 @@
                     <div class="fields">
                         <div class="field">
                             <label for="name">Nombre</label>
-                            <input type="text" name="nombre" id="name" required />
+                            <input type="text" name="nombre" id="nombre" required />
                         </div>
                         <div class="field half">
                             <label for="Trayecto">Trayecto</label>
                             <select class="sel" name="trayecto" id="destino" required>
                                 <option value="" selected>--Seleccionar--</option>
-                                <?php 
-                                    $sql = "SELECT codigo,origen_destino FROM trayectos";
-                                    $query = $conexion -> query ($sql);
+                                <?php
+                                $sql = "SELECT codigo,origen_destino FROM trayectos";
+                                $query = $conexion->query($sql);
 
-                                    while($valores = mysqli_fetch_array($query)){
-                                    echo "<option value='".$valores['codigo']."'>".$valores['origen_destino']."</option>";
+                                while ($valores = mysqli_fetch_array($query)) {
+                                    echo "<option value='" . $valores['codigo'] . "'>" . $valores['origen_destino'] . "</option>";
                                 }
-                                 ?>
+                                ?>
                             </select>
                         </div>
                         <div class="field half">
@@ -122,8 +122,7 @@
                         </li>
                         <li><input type="reset" value="Borrar" id="erasebtn" /></li>
                         <li>
-                        <a href="Reservacion/reporte.php#elements">mis reportes</a>
-
+                            <a class="waves-effect waves-light btn" href="Reservacion/reporte.php#elements">mis reportes</a>
                         </li>
                     </ul>
                 </form>
