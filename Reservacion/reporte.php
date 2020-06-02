@@ -34,7 +34,6 @@ include ('../bd.php');
             
                 <section>
                     <h3 class="major">RESERVACIONES</h3>
-                    <h4>Default</h4>
                     <div class="table-wrapper">
                         <table>
                             <thead>
@@ -42,32 +41,43 @@ include ('../bd.php');
                                     <th>nombre</th>
                                     <th>trayecto</th>
                                     <th>fecha</th>
+                                    <th>distancia</th>
+                                    <th>duracion</th>
+                                    <th>vehiculo</th>
+
+
+
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php
-                            $query = "SELECT * FROM reserva";
-                             $result= mysqli_query($conn, $query);    
+                            
+                            $query = "SELECT r.id,r.nombre,r.trayecto,r.fecha,t.origen_destino,t.distancia,
+                            t.duracion,t.vehiculo FROM reserva r
+                             inner join trayectos t on r.trayecto=t.codigo";
+                            $result= mysqli_query($conn, $query);
+
 
                             while($row = mysqli_fetch_assoc($result)) { ?>
                             <tr>
                             <td><?php echo $row['nombre']; ?></td>
-                            <td><?php echo $row['trayecto']; ?></td>
-                             <td><?php echo $row['fecha']; ?></td>
+                            <td><?php echo $row['origen_destino']; ?></td>
+                             <td><?php echo $row['fecha']; ?></td>  
+                             <td><?php echo $row['distancia']; ?></td>  
+                             <td><?php echo $row['duracion']; ?></td>  
+                             <td><?php echo $row['vehiculo']; ?></td>  
                             <td>
-                            <a href="edit.php?id=<?php echo $row['id']?>" class="btn btn-secondary">
-                            <i class="fas fa-marker"></i>
-                            </a>
-                            <a href="edit.php#contact">mis reportes</a>
+                            <a href="edit.php?id=<?php echo $row['id']?>#contact">Editar</a>
 
-                            <a href="delete.php?id=<?php echo $row['id']?>" class="btn btn-danger">
-                                <i class="far fa-trash-alt"></i>
-                            </a>
+                            <a href="delete.php?id=<?php echo $row['id']?>">
+                            Eliminar</>
                             </td>
+                            
                             </tr>
-                            <?php } ?>
+                            <?php } ?>                                
                         </table>
+                        <a href="../reservas.php#booking">volver</a>
                     </div>
                 </section>
             </article>

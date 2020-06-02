@@ -1,17 +1,3 @@
-// json/TRAYECTOS_DATA_TABLE.json
-// file = new File("json/TRAYECTOS_DATA_TABLE.json");
-// let reader = new FileReader();
-// reader.readAsDataURL(file);
-// console.log(reader.result);
-url = "json/TRAYECTOS_DATA_TABLE.json";
-fetch(url,{mode:"cors"})
-                    .then(res => res.blob())
-                    .then(blob => {
-                        const file = new File([blob], 'TRAYECTOS_DATA_TABLE.json', {type:'text/json'});
-                        console.log(file);
-                    });
-
-
 function validate() {
   var name = document.getElementById("name").value;
   var destinoList = document.getElementById("destino");
