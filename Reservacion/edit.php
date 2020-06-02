@@ -1,8 +1,8 @@
 <?php
-error_reporting(E_ALL); 
+error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-include ('../bd.php');
+include('../bd.php');
 $nombre = '';
 $trayecto= '';
 $fecha= '';
@@ -28,16 +28,16 @@ if  (isset($_GET['id'])) {
 }
 
 if (isset($_POST['update'])) {
-  $id = $_GET['id'];
-  $nombre= $_POST['nombre'];
-  $trayecto = $_POST['trayecto'];
-  $fecha = $_POST['fecha'];
+    $id = $_GET['id'];
+    $nombre = $_POST['nombre'];
+    $trayecto = $_POST['trayecto'];
+    $fecha = $_POST['fecha'];
 
-  $query = "UPDATE reserva set nombre = '$nombre', trayecto = '$trayecto', fecha = '$fecha' WHERE id=$id";
-  mysqli_query($conn, $query);
-  $_SESSION['message'] = 'Task Updated Successfully';
-  $_SESSION['message_type'] = 'warning';
-  header('Location: reporte.php#elements');
+    $query = "UPDATE reserva set nombre = '$nombre', trayecto = '$trayecto', fecha = '$fecha' WHERE id=$id";
+    mysqli_query($conn, $query);
+    $_SESSION['message'] = 'Task Updated Successfully';
+    $_SESSION['message_type'] = 'warning';
+    header('Location: reporte.php#elements');
 }
 /**/
 $queryAll = "SELECT t.origen_destino,t.distancia,
@@ -104,7 +104,7 @@ function cambia(){
                         </div>
                         <div class="field half">
                             <label for="date">Fecha</label>
-                            <input type="date" name="fecha" id="date" value="<?php echo $fecha;?>" />
+                            <input type="date" name="fecha" id="date" value="<?php echo $fecha; ?>" />
                         </div>
                         <div class="field half">
                             <label for="date">Distancia</label>
@@ -122,15 +122,19 @@ function cambia(){
                             <label for="costo">Costo</label>
                             <input id="costo" name="costo" type="text" class="form-control" value="<?php echo $costo; ?>" disabled>
                         </div>
-                    <ul class="actions">
-                        <li>
-                            <input type="submit" value="RESERVAR" class="primary" id="reservabtn" name="update"/>
-                        </li>
-                        <li>
-                        <a href="reporte.php#elements">volver</a>
-                        </li>
+                        <div class="field half">
+                            <ul class="actions">
+                                <li>
+                                    <input type="submit" value="RESERVAR" class="primary" id="reservabtn" name="update" />
+                                </li>
+                                <li>
+                                    <a class="waves-effect waves-light btn" href="reporte.php#elements">Volver</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </form>
-            </article>           
+            </article>
         </div>
 
         <!-- Footer -->
@@ -145,9 +149,9 @@ function cambia(){
     <!-- Scripts -->
     <script src="../assets2/js/jquery.min.js"></script>
     <script src="../assets2/js/browser.min.js"></script>
-    <script src="../assets2/js/breakpoints.min.js"></script> 
-    <script src="../assets2/js/util.js"></script> 
-    <script src="../assets2/js/main.js"></script> 
+    <script src="../assets2/js/breakpoints.min.js"></script>
+    <script src="../assets2/js/util.js"></script>
+    <script src="../assets2/js/main.js"></script>
     <script src="../assets2/js/custom.js"></script>
     <script src="../materialize/js/materialize.js"></script>
 </body>
