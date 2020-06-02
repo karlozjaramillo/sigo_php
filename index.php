@@ -34,9 +34,9 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 <!-- Signup Form -->
 <?php require 'partials/header.php' ?>
 
-<?php if (!empty($message)) : ?>
+<!-- <?php if (!empty($message)) : ?>
   <p> <?= $message ?></p>
-<?php endif; ?>
+<?php endif; ?> -->
 
 <!DOCTYPE html>
 <!--
@@ -81,6 +81,9 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
       <input type="text" name="email" placeholder="Correo Electrónico" />
       <input type="password" name="password" placeholder="Contraseña" />
       <input type="submit" value="Ingresar" />
+      <?php if (!empty($message)) : ?>
+        <p> <?= $message ?></p>
+      <?php endif; ?>
     </div>
   </form>
   <span><a href="signup.php">Regístrate</a></span>
