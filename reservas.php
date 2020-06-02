@@ -491,48 +491,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
     <script src="assets2/js/custom.js"></script>
     <script src="materialize/js/materialize.js"></script>
     <script>
-<<<<<<< HEAD
-    const calendar = document.querySelector("#date");
-    M.Datepicker.init(calendar, {
-        format: "yyyy/mm/dd",
-        minDate: new Date(),
-        defaultDate: new Date(),
-        setDefaultDate: true,
-    });
-
-    let seleccionar = document.querySelector("select");
-
-    seleccionar.addEventListener("change", establecerCosto);
-
-    function establecerCosto() {
-        let eleccion = seleccionar.value;
-
-        if (eleccion === "ANS-PEI") {
-            document.getElementById("costo").value = "$25000";
-            document.getElementById("vehiculo").value = "VHY321";
-            document.getElementById("distancia").value = "79,3 Kms";
-            document.getElementById("duracion").value = "94 minutos";
-        } else if (eleccion === "MAN-PEI") {
-            document.getElementById("costo").value = "$15000";
-            document.getElementById("vehiculo").value = "BTR963";
-            document.getElementById("distancia").value = "53,2 Kms";
-            document.getElementById("duracion").value = "76 minutos";
-        } else if (eleccion === "VIR-PEI") {
-            document.getElementById("costo").value = "$10000";
-            document.getElementById("vehiculo").value = "NSA741";
-            document.getElementById("distancia").value = "34,8 Kms";
-            document.getElementById("duracion").value = "53 minutos";
-        } else if (eleccion === "VTR-MAN") {
-            document.getElementById("costo").value = "$45000";
-            document.getElementById("vehiculo").value = "TGB537";
-            document.getElementById("distancia").value = "75 Kms";
-            document.getElementById("duracion").value = "121 minutos";
-        } else {
-            document.getElementById("costo").value = "";
-            document.getElementById("vehiculo").value = "";
-            document.getElementById("distancia").value = "";
-            document.getElementById("duracion").value = "";
-=======
         const calendar = document.querySelector("#date");
         M.Datepicker.init(calendar, {
             format: "yyyy/mm/dd",
@@ -574,7 +532,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                 document.getElementById("distancia").value = "";
                 document.getElementById("duracion").value = "";
             }
->>>>>>> 3322aa39d2812b941f83dad30ee193ce699c0d63
         }
     </script>
 </body>
