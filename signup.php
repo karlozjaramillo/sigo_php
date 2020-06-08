@@ -50,10 +50,32 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 
   <form action="signup.php" method="POST">
     <div id="signup-form">
-      <input name="email" type="text" placeholder="Ingresa tu correo">
-      <input name="password" type="password" placeholder="Ingresa tu contraseña">
-      <input name="confirm_password" type="password" placeholder="Confirma tu contraseña">
-      <input type="submit" value="Registrar">
+      <div class="fields">
+        <div class="field-half">
+          <input name="name" type="text" placeholder="Ingresa tu nombre">
+        </div>
+        <div class="field-half">
+          <input name="document" type="text" placeholder="Ingresa tu documento">
+        </div>
+        <div class="field-half">
+          <input name="phone" type="text" placeholder="Ingresa tu teléfono">
+        </div>
+        <div class="field-half">
+          <input name="adress" type="text" placeholder="Ingresa tu dirección">
+        </div>
+        <div class="field-half">
+          <input name="email" type="text" placeholder="Ingresa tu correo">
+        </div>
+        <div class="field-half">
+          <input name="password" type="password" placeholder="Ingresa tu contraseña">
+        </div>
+        <div class="field-half">
+          <input name="confirm_password" type="password" placeholder="Confirma tu contraseña">
+        </div>
+        <div class="field-half">
+          <input type="submit" value="Registrar">
+        </div>
+      </div>
     </div>
   </form>
   <span><a href="index.php">Ingresa</a></span>
