@@ -4,17 +4,26 @@ require 'database.php';
 
 $message = '';
 
-if (!empty($_POST['email']) && !empty($_POST['password'])) {
-  $sql = "INSERT INTO users (email, password) VALUES (:email, :password)";
+if (
+  !empty($_POST['email']) && !empty($_POST['password'])
+  && !empty($_POST['name']) && !empty($_POST['document']
+    && !empty($_POST['phone']) && !empty($_POST['adress']))
+) {
+  $sql = "INSERT INTO users (email, password, nombre, documento, telefono, direccion) 
+  VALUES (:email, :password, :name, :document, :phone, :adress)";
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(':email', $_POST['email']);
   $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
   $stmt->bindParam(':password', $password);
+  $stmt->bindParam(':name', $_POST['name']);
+  $stmt->bindParam(':document', $_POST['document']);
+  $stmt->bindParam(':phone', $_POST['phone']);
+  $stmt->bindParam(':adress', $_POST['adress']);
 
   if ($stmt->execute()) {
     $message = 'Te has registrado satisfactoriamente';
   } else {
-    $message = 'Lo siento, hemos tenido problemas creando tu cuenta';
+    $message = 'Lo sentimos, hemos tenido problemas creando tu cuenta';
   }
 }
 ?>
@@ -48,7 +57,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 
   <h6>Regístrate</h6>
 
-  <form action="signup.php" method="POST">
+  <form action="signup.php" method="post">
     <div id="signup-form">
       <div class="fields">
         <div class="field-half">
