@@ -120,23 +120,28 @@ function test_input($data)
       <div class="fields">
         <div class="field-half">
           <span class="error"><?php echo $nameErr; ?></span>
-          <input name="name" type="text" placeholder="Ingresa tu nombre (*)">
+          <input name="name" type="text" placeholder="Ingresa tu nombre (*)" 
+          value="<?php echo $name;?>">
         </div>
         <div class="field-half">
           <span class="error"><?php echo $documentErr; ?></span>
-          <input name="document" type="text" placeholder="Ingresa tu documento (*)">
+          <input name="document" type="text" placeholder="Ingresa tu documento (*)"
+          value="<?php echo $document;?>">
         </div>
         <div class="field-half">
           <span class="error"><?php echo $phoneErr; ?></span>
-          <input name="phone" type="text" placeholder="Ingresa tu teléfono (*)">
+          <input name="phone" type="text" placeholder="Ingresa tu teléfono (*)"
+          value="<?php echo $phone;?>">
         </div>
         <div class="field-half">
           <span class="error"><?php echo $adressErr; ?></span>
-          <input name="adress" type="text" placeholder="Ingresa tu dirección (*)">
+          <input name="adress" type="text" placeholder="Ingresa tu dirección (*)"
+          value="<?php echo $adress;?>">
         </div>
         <div class="field-half">
           <span class="error"><?php echo $emailErr; ?></span>
-          <input name="email" type="text" placeholder="Ingresa tu correo (*)">
+          <input name="email" type="text" placeholder="Ingresa tu correo (*)"
+          value="<?php echo $email;?>">
         </div>
         <div class="field-half">
           <span class="error"><?php echo $passwordErr; ?></span>
