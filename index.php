@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['user_id'])) {
-  header('Location: reservas.html');
+  header('Location: reservas.php');
 }
 require 'database.php';
 
@@ -77,12 +77,13 @@ function test_input($data)
 </head>
 
 <body class="is-preload">
-  <?php if (!empty($user)) : ?>
-    <br> Bienvenido. <?= $user['email']; ?>
-    <br>You are Successfully Logged In
-    <?php require 'reservas.php' ?>
+<?php if (!empty($user)) : ?>
+    <br> Upps!!. <?= $user['email']; ?>
+    <br>Por favor intentelo de nuevo.
+    <?   header('Location: index.php')?>
   <?php else : ?>
     <!-- <h1>Please Login or SignUp</h1> -->
+    <?   header('Location: reservas.php')?>
 
     <!-- <a href="signup.php">SignUp</a> -->
   <?php endif; ?>
