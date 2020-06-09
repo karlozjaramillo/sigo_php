@@ -12,7 +12,7 @@ if(isset($_GET['id'])) {
 
   $_SESSION['message'] = 'Task Removed Successfully';
   $_SESSION['message_type'] = 'danger';
-  header('Location: reporte.php#elements');
+  header('Location: ../reservas.php#reports');
 }
 
 ?>

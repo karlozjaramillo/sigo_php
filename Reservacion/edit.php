@@ -4,9 +4,9 @@ ini_set('display_errors', 1);
 
 include('../bd.php');
 $nombre = '';
-$trayecto= '';
-$fecha= '';
-if  (isset($_GET['id'])) {
+$trayecto = '';
+$fecha = '';
+if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $query = "SELECT r.id,r.nombre,r.trayecto,r.fecha,t.origen_destino,t.distancia,
     t.duracion,t.vehiculo, t.costo FROM reserva r inner join trayectos t on r.trayecto=t.codigo
@@ -14,16 +14,15 @@ if  (isset($_GET['id'])) {
 
     $result = mysqli_query($conn, $query);
     if (mysqli_num_rows($result) == 1) {
-      $row = mysqli_fetch_array($result);
-      $nombre = $row['nombre'];
-      $trayecto = $row['trayecto'];
-      $fecha = $row['fecha'];
-      $origen_destino = $row['origen_destino'];
-      $distancia = $row['distancia'];
-      $duracion = $row['duracion'];
-      $vehiculo = $row['vehiculo'];
-      $costo = $row['costo'];
-  
+        $row = mysqli_fetch_array($result);
+        $nombre = $row['nombre'];
+        $trayecto = $row['trayecto'];
+        $fecha = $row['fecha'];
+        $origen_destino = $row['origen_destino'];
+        $distancia = $row['distancia'];
+        $duracion = $row['duracion'];
+        $vehiculo = $row['vehiculo'];
+        $costo = $row['costo'];
     }
 }
 
@@ -42,24 +41,25 @@ if (isset($_POST['update'])) {
 /**/
 $queryAll = "SELECT t.origen_destino,t.distancia,
 t.duracion,t.vehiculo, costo FROM trayectos t";
-$resultAll= mysqli_query($conn, $queryAll);
+$resultAll = mysqli_query($conn, $queryAll);
 $rowAll = mysqli_fetch_all($resultAll);
 ?>
 
 <script>
-var data = <?php echo json_encode($rowAll); ?>;
-function cambia(){
-  var trayecto = document.getElementById("destino");
-  var selTrayecto = trayecto.options[trayecto.selectedIndex].text;
-  for (let index = 0; index < data.length; index++) {
-    if(selTrayecto == data[index][0]){
-      document.getElementById("distancia").value = data[index][1];
-      document.getElementById("duracion").value = data[index][2];
-      document.getElementById("vehiculo").value = data[index][3];
-      document.getElementById("costo").value = data[index][4];
+    var data = <?php echo json_encode($rowAll); ?>;
+
+    function cambia() {
+        var trayecto = document.getElementById("destino");
+        var selTrayecto = trayecto.options[trayecto.selectedIndex].text;
+        for (let index = 0; index < data.length; index++) {
+            if (selTrayecto == data[index][0]) {
+                document.getElementById("distancia").value = data[index][1];
+                document.getElementById("duracion").value = data[index][2];
+                document.getElementById("vehiculo").value = data[index][3];
+                document.getElementById("costo").value = data[index][4];
+            }
+        }
     }
-  }
-  }
 </script>
 <!DOCTYPE html>
 <html>
@@ -90,17 +90,17 @@ function cambia(){
                             <input name="nombre" type="text" value="<?php echo $nombre; ?>" placeholder="Update nombre" />
                         </div>
                         <div class="field half">
-                        <label for="date">Trayecto</label>
-                        <select class="sel" name="trayecto" id="destino" onchange="cambia()" required>
-                            <option value="<?php echo $trayecto; ?>" selected><?php echo $origen_destino; ?></option>
-                            <?php 
-                            $sql = "SELECT codigo,origen_destino FROM trayectos WHERE codigo!=".$trayecto."";
-                            $query = $conn -> query ($sql);
-                            while($valores = mysqli_fetch_array($query)){
-                            echo "<option value='".$valores['codigo']."'>".$valores['origen_destino']."</option>";
-                            }
-                            ?>
-                        </select>
+                            <label for="date">Trayecto</label>
+                            <select class="sel" name="trayecto" id="destino" onchange="cambia()" required>
+                                <option value="<?php echo $trayecto; ?>" selected><?php echo $origen_destino; ?></option>
+                                <?php
+                                $sql = "SELECT codigo,origen_destino FROM trayectos WHERE codigo!=" . $trayecto . "";
+                                $query = $conn->query($sql);
+                                while ($valores = mysqli_fetch_array($query)) {
+                                    echo "<option value='" . $valores['codigo'] . "'>" . $valores['origen_destino'] . "</option>";
+                                }
+                                ?>
+                            </select>
                         </div>
                         <div class="field half">
                             <label for="date">Fecha</label>

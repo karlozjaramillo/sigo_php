@@ -1,9 +1,56 @@
 <?php require 'database.php';
+include('bd.php');
 
 $queryAll = "SELECT t.origen_destino,t.distancia,
 t.duracion,t.vehiculo, t.costo FROM trayectos t";
 $resultAll = mysqli_query($conexion, $queryAll);
 $rowAll = mysqli_fetch_all($resultAll);
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+include('bd.php');
+$nombre = '';
+$trayecto = '';
+$fecha = '';
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $query = "SELECT r.id,r.nombre,r.trayecto,r.fecha,t.origen_destino,t.distancia,
+    t.duracion,t.vehiculo, t.costo FROM reserva r inner join trayectos t on r.trayecto=t.codigo
+    WHERE id=$id";
+
+    $result = mysqli_query($conn, $query);
+    if (mysqli_num_rows($result) == 1) {
+        $row = mysqli_fetch_array($result);
+        $nombre = $row['nombre'];
+        $trayecto = $row['trayecto'];
+        $fecha = $row['fecha'];
+        $origen_destino = $row['origen_destino'];
+        $distancia = $row['distancia'];
+        $duracion = $row['duracion'];
+        $vehiculo = $row['vehiculo'];
+        $costo = $row['costo'];
+    }
+}
+
+if (isset($_POST['update'])) {
+    $id = $_GET['id'];
+    $nombre = $_POST['nombre'];
+    $trayecto = $_POST['trayecto'];
+    $fecha = $_POST['fecha'];
+
+    $query = "UPDATE reserva set nombre = '$nombre', trayecto = '$trayecto', fecha = '$fecha' WHERE id=$id";
+    mysqli_query($conn, $query);
+    $_SESSION['message'] = 'Registro Actualizado';
+    $_SESSION['message_type'] = 'warning';
+    header('Location: reservas.php#reports');
+}
+/**/
+$queryAll = "SELECT t.origen_destino,t.distancia,
+t.duracion,t.vehiculo, costo FROM trayectos t";
+$resultAll = mysqli_query($conn, $queryAll);
+$rowAll = mysqli_fetch_all($resultAll);
+
 ?>
 
 <script>
@@ -66,7 +113,7 @@ $rowAll = mysqli_fetch_all($resultAll);
 
         <!-- Main -->
         <div id="main">
-            
+
             <!-- Reserva -->
             <article id="booking">
                 <h2 class="major">Reserva</h2>
@@ -96,19 +143,19 @@ $rowAll = mysqli_fetch_all($resultAll);
                             <input type="text" name="fecha" id="date" />
                         </div>
                         <div class="field half">
-                            <label for="Costo">Costo</label>
+                            <label for="costo">Costo</label>
                             <input type="text" name="costo" id="costo" required disabled />
                         </div>
                         <div class="field half">
-                            <label for="Vehiculo">Vehículo</label>
+                            <label for="vehiculo">Vehículo</label>
                             <input type="text" name="vehiculo" id="vehiculo" required disabled />
                         </div>
                         <div class="field half">
-                            <label for="Vehiculo">Distancia</label>
+                            <label for="distancia">Distancia</label>
                             <input type="text" name="distancia" id="distancia" required disabled />
                         </div>
                         <div class="field half">
-                            <label for="Vehiculo">Duración</label>
+                            <label for="duracion">Duración</label>
                             <input type="text" name="duracion" id="duracion" required disabled />
                         </div>
                     </div>
@@ -118,9 +165,112 @@ $rowAll = mysqli_fetch_all($resultAll);
                         </li>
                         <li><input type="reset" value="Borrar" id="erasebtn" /></li>
                         <li>
-                            <a class="waves-effect waves-light btn" href="Reservacion/reporte.php#elements">mis reportes</a>
+                            <a class="waves-effect waves-light btn" href="#reports">Mis reportes</a>
                         </li>
                     </ul>
+                </form>
+            </article>
+
+            <!-- Reportes -->
+            <article id="reports">
+                <h3 class="major">RESERVACIONES</h3>
+                <div class="fields">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Trayecto</th>
+                                    <th>Fecha</th>
+                                    <th>Distancia</th>
+                                    <th>Duración</th>
+                                    <th>Vehículo</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $query = "SELECT r.id,r.nombre,r.trayecto,r.fecha,t.origen_destino,t.distancia,
+                            t.duracion,t.vehiculo FROM reserva r
+                             inner join trayectos t on r.trayecto=t.codigo";
+                                $result = mysqli_query($conn, $query);
+                                while ($row = mysqli_fetch_assoc($result)) { ?>
+                                    <tr>
+                                        <td><?php echo $row['nombre']; ?></td>
+                                        <td><?php echo $row['origen_destino']; ?></td>
+                                        <td><?php echo $row['fecha']; ?></td>
+                                        <td><?php echo $row['distancia']; ?></td>
+                                        <td><?php echo $row['duracion']; ?></td>
+                                        <td><?php echo $row['vehiculo']; ?></td>
+                                        <td>
+                                            <a href="reservas.php?id=<?php echo $row['id'] ?>#edit">
+                                                <i class="fas fa-edit"></i></a>
+                                            <a href="Reservacion/delete.php?id=<?php echo $row['id'] ?>">
+                                                <i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                        </table>
+                        <div class="field half">
+                            <a class="waves-effect waves-light btn" href="reservas.php#booking">Volver</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Editar -->
+            <article id="edit">
+                <h2 class="major">EDITAR RESERVA</h2>
+                <form action="reservas.php?id=<?php echo $_GET['id']; ?>" method="POST">
+                    <div class="fields">
+                        <div class="field">
+                            <label for="nombre">Nombre</label>
+                            <input name="nombre" type="text" value="<?php echo $nombre; ?>" placeholder="Update nombre" />
+                        </div>
+                        <div class="field half">
+                            <label for="destino">Trayecto</label>
+                            <select class="sel" name="trayecto" id="destino" onchange="cambia()" required>
+                                <option value="<?php echo $trayecto; ?>" selected><?php echo $origen_destino; ?></option>
+                                <?php
+                                $sql = "SELECT codigo,origen_destino FROM trayectos WHERE codigo!=" . $trayecto . "";
+                                $query = $conn->query($sql);
+                                while ($valores = mysqli_fetch_array($query)) {
+                                    echo "<option value='" . $valores['codigo'] . "'>" . $valores['origen_destino'] . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="field half">
+                            <label for="date">Fecha</label>
+                            <input type="date" name="fecha" id="date" value="<?php echo $fecha; ?>" />
+                        </div>
+                        <div class="field half">
+                            <label for="distancia">Distancia</label>
+                            <input id="distancia" name="distancia" type="text" class="form-control" value="<?php echo $distancia; ?>" disabled>
+                        </div>
+                        <div class="field half">
+                            <label for="duracion">Duración</label>
+                            <input id="duracion" name="duracion" type="text" class="form-control" value="<?php echo $duracion; ?>" disabled>
+                        </div>
+                        <div class="field half">
+                            <label for="vehiculo">Vehículo</label>
+                            <input id="vehiculo" name="vehiculo" type="text" class="form-control" value="<?php echo $vehiculo; ?>" disabled>
+                        </div>
+                        <div class="field half">
+                            <label for="costo">Costo</label>
+                            <input id="costo" name="costo" type="text" class="form-control" value="<?php echo $costo; ?>" disabled>
+                        </div>
+                        <div class="field half">
+                            <ul class="actions">
+                                <li>
+                                    <input type="submit" value="RESERVAR" class="primary" id="reservabtn" name="update" />
+                                </li>
+                                <li>
+                                    <a class="waves-effect waves-light btn" href="reservas.php#reports">Volver</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </form>
             </article>
 
