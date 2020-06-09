@@ -6,10 +6,10 @@ $message = '';
 
 if (
   !empty($_POST['email']) && !empty($_POST['password'])
-  && !empty($_POST['name']) && !empty($_POST['document']
-    && !empty($_POST['phone']) && !empty($_POST['adress']))
+  && !empty($_POST['name']) && !empty($_POST['document'])
+  && !empty($_POST['phone']) && !empty($_POST['adress'])
 ) {
-  $sql = "INSERT INTO users (email, password, nombre, documento, telefono, direccion) 
+  $sql = "INSERT INTO users (email, password, nombre, documento, telefono, direccion)
   VALUES (:email, :password, :name, :document, :phone, :adress)";
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(':email', $_POST['email']);
@@ -84,10 +84,11 @@ if (
         <div class="field-half">
           <input type="submit" value="Registrar">
         </div>
+        <span><a href="index.php">Ingresa</a></span>
       </div>
     </div>
   </form>
-  <span><a href="index.php">Ingresa</a></span>
+
 
   <!-- Footer -->
   <footer id="footer">

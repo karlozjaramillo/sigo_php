@@ -1111,7 +1111,6 @@ button:disabled,
 #signup-form input[type="password"],
 #signup-form input[type="email"] {
   width: 18em;
-  margin: 10px;
 }
 #signup-form > * {
   margin: 0 0 0 1em;
@@ -1211,4 +1210,8 @@ button:disabled,
     margin: 1em 0 0 0;
     position: relative;
   }
+}
+
+.field-half {
+  margin: 10px 0px;
 }
