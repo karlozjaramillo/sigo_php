@@ -29,14 +29,37 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
     $message = 'Los datos no son válidos, intenta nuevamente.';
   }
 }
+
+// define variables and set to empty values
+$emailErr = $passwordErr = "";
+$email = $password = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  if (empty($_POST["email"])) {
+    $emailErr = "Correo es obligatorio";
+  } else {
+    $email = test_input($_POST["email"]);
+  }
+
+  if (empty($_POST["password"])) {
+    $passwordErr = "Contraseña es obligatorio";
+  } else {
+    $password = test_input($_POST["password"]);
+  }
+}
+
+function test_input($data)
+{
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
 ?>
 
 <!-- Signup Form -->
 <?php require 'partials/header.php' ?>
-
-<!-- <?php if (!empty($message)) : ?>
-  <p> <?= $message ?></p>
-<?php endif; ?> -->
 
 <!DOCTYPE html>
 <!--
@@ -78,11 +101,19 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
   <!-- Signup Form id="signup-form"-->
   <form method="post" action="index.php">
     <div id="signup-form">
-      <input type="text" name="email" placeholder="Correo Electrónico" />
-      <input type="password" name="password" placeholder="Contraseña" />
-      <input type="submit" value="Ingresar" />
+      <div>
+        <input type="text" name="email" placeholder="Correo Electrónico" />
+        <span class="error"><?php echo $emailErr; ?></span>
+      </div>
+      <div>
+        <input type="password" name="password" placeholder="Contraseña" />
+        <span class="error"><?php echo $passwordErr; ?></span>
+      </div>
+      <div>
+        <input type="submit" value="Ingresar" />
+      </div>
       <?php if (!empty($message)) : ?>
-        <p> <?= $message ?></p>
+        <p class="error"> <?= $message ?></p>
       <?php endif; ?>
     </div>
   </form>
